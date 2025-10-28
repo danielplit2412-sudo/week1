@@ -76,3 +76,14 @@ void initQueue(Queue* q, unsigned int size)
 	q->tail = 0;
 	q->count = 0;
 }
+void cleanQueue(Queue* q)
+{
+	
+	delete[] q->arr;
+	q->arr = NULL;
+	q->capacity = 0;
+	q->head = 0;
+	q->tail = 0;
+	q->count = 0;
+}
+
