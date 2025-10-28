@@ -46,3 +46,16 @@ void enqueue(Queue* q, unsigned int newValue)
 	q->count++;
 
 }
+int dequeue(Queue* q)
+{
+	int value = 0;
+	if (q->count==0)
+	{
+		return -1;
+	}
+	value = q->arr[q->head];
+	q->head = (q->head + 1) % q->capacity;
+	q->count--;
+	return value;
+
+}
