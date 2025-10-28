@@ -86,4 +86,27 @@ void cleanQueue(Queue* q)
 	q->tail = 0;
 	q->count = 0;
 }
+bool isEmpty(Queue* s)
+{
+	if (s->count == 0)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+bool isFull(Queue* s)
+{
+	if (s->count == s->capacity)
+	{
+		return true;
+	}
+	else
+	{
+		return false
+	}
+}
+
 
