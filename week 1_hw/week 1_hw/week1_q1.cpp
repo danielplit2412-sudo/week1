@@ -59,3 +59,20 @@ int dequeue(Queue* q)
 	return value;
 
 }
+void initQueue(Queue* q, unsigned int size)
+{
+	if (size == 0)
+	{
+		q->arr = NULL;
+		q->capacity = 0;
+	}
+	else
+	{
+		q->arr = new int[size];
+		q->capacity = size;
+
+	}
+	q->head = 0;
+	q->tail = 0;
+	q->count = 0;
+}
