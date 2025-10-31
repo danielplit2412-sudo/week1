@@ -30,3 +30,23 @@ void removeFromHead(linkedList** head)
     delete temp;
 
 }
+void printList(linkedList* head)
+{
+   
+    if (head == NULL)
+    {
+        std::cout << "List is empty." << std::endl;
+        return;
+    }
+    std::cout << "list: " << std::endl;
+
+    linkedList* current = head; 
+
+    while (current != NULL)
+    {
+        std::cout << current->data << std::endl;
+        current = current->next;           
+    }
+
+    std::cout << std::endl;
+}
