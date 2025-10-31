@@ -16,3 +16,17 @@ void addToHead(linkedList** head, int value)
     newNode->next = *head;
     *head = newNode;
 }
+void removeFromHead(linkedList** head)
+{
+    linkedList* temp = NULL;
+    if (*head == NULL)
+    {
+        std::cout << "List is empty, nothing to remove." << std::endl;
+        return;
+    }
+    temp=*head;
+    *head = (*head)->next;
+    std::cout << "Removed element: " << temp->data << std::endl;
+    delete temp;
+
+}
