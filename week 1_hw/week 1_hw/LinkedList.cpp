@@ -2,9 +2,37 @@
 #include <iostream>   
 int main()
 {
+    linkedList* head;
+    initList(&head);
 
-	return 0;
+    std::cout << "----- Checking if list is empty -----" << std::endl;
+    isEmpty(head);
+
+    std::cout << "\n----- Adding elements -----" << std::endl;
+    addToHead(&head, 10);
+    addToHead(&head, 20);
+    addToHead(&head, 30);
+    printList(head);
+
+    std::cout << "\n----- Checking if list is empty -----" << std::endl;
+    isEmpty(head);
+
+    std::cout << "\n----- Removing elements -----" << std::endl;
+    removeFromHead(&head);
+    printList(head);
+    removeFromHead(&head);
+    printList(head);
+
+    std::cout << "\n----- Cleaning list -----" << std::endl;
+    cleanList(&head);
+
+    std::cout << "\n----- Final check -----" << std::endl;
+    isEmpty(head);
+
+    std::cout << "\nProgram finished successfully." << std::endl;
+    return 0;
 }
+
 void initList(linkedList** head)
 {
 	*head = NULL;  
@@ -63,3 +91,17 @@ void cleanList(linkedList** head)
     *head = NULL;
     std::cout << "List cleaned successfully." << std::endl;
 }
+bool isEmpty(linkedList* head)
+{
+    if (head == NULL)
+    {
+        std::cout << "List is empty." << std::endl;
+        return true;
+    }
+    else
+    {
+        std::cout << "List is not empty." << std::endl;
+        return false;
+    }
+}
+
