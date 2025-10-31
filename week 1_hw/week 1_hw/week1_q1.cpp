@@ -1,9 +1,63 @@
 #include "Queue.h"  
 #include <iostream>  
 #include <cstdlib>   
+#define SIZE 3
 int main()
 {
+	Queue q;
 
+	std::cout << "Initializing queue..." << std::endl;
+	initQueue(&q, SIZE);
+	std::cout << "Queue initialized successfully!" << std::endl;
+
+	if (isEmpty(&q))
+	{
+		std::cout << "Queue is empty before adding elements." << std::endl;
+	}
+
+	enqueue(&q, 10);
+	std::cout << "Element was pushed: 10" << std::endl;
+
+	enqueue(&q, 20);
+	std::cout << "Element was pushed: 20" << std::endl;
+
+	enqueue(&q, 30);
+	std::cout << "Element was pushed: 30" << std::endl;
+
+	if (isFull(&q))
+	{
+		std::cout << "Queue is full now." << std::endl;
+	}
+	else
+	{
+		std::cout << "Queue is not full yet." << std::endl;
+	}
+
+	int value = dequeue(&q);
+	std::cout << "Element was poped: " << value << std::endl;
+
+	if (isEmpty(&q))
+	{
+		std::cout << "Queue is empty." << std::endl;
+	}
+	else
+	{
+		std::cout << "Queue is not empty." << std::endl;
+	}
+
+	if (isFull(&q))
+	{
+		std::cout << "Queue is full." << std::endl;
+	}
+	else
+	{
+		std::cout << "Queue is not full." << std::endl;
+	}
+
+	cleanQueue(&q);
+	std::cout << "Queue cleaned successfully." << std::endl;
+
+	return 0;
 }
 void enqueue(Queue* q, unsigned int newValue)
 {
@@ -105,7 +159,7 @@ bool isFull(Queue* s)
 	}
 	else
 	{
-		return false
+		return false;
 	}
 }
 
