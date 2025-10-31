@@ -50,3 +50,16 @@ void printList(linkedList* head)
 
     std::cout << std::endl;
 }
+void cleanList(linkedList** head)
+{
+    linkedList* current = NULL;
+    current = *head;
+    while (current != NULL)
+    {
+        linkedList* temp = current;
+        current = current->next;
+        delete temp;
+    }
+    *head = NULL;
+    std::cout << "List cleaned successfully." << std::endl;
+}
