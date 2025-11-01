@@ -34,6 +34,11 @@ int pop(Stack* s)
     return value;
 
 }
+void initStack(Stack* s)
+{
+    s->top = NULL;
+    std::cout << "Stack initialized successfully." << std::endl;
+}
 
 
 
