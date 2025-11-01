@@ -29,25 +29,52 @@ void set_console_color(unsigned int color)
     SetConsoleTextAttribute(hConsole, color);
 }
 
-/* ===== reverse (Utils.cpp) ===== */
+// Reverses the order of elements in an integer array using a stack
+// Receives: int* nums (array), unsigned int size (array size)
+// Returns: void
 void reverse(int* nums, unsigned int size)
 {
-    if (nums == nullptr || size == 0)
+    if (nums == NULL || size == 0)
         return;
 
+    // Create a temporary stack to hold the elements
     Stack s;
     initStack(&s);
 
+    // Push all elements into the stack
     for (unsigned int i = 0; i < size; i++)
         push(&s, nums[i]);
 
+    // Pop all elements back into the array in reversed order
     for (unsigned int i = 0; i < size; i++)
         nums[i] = pop(&s);
 
+    // Clean up the stack to free memory
     cleanStack(&s);
 }
 
-/* ===== Helper funcs for tests ===== */
+// Reads 10 integers from the user, reverses their order, and returns them
+// Receives: nothing
+// Returns: int* (pointer to dynamically allocated reversed array)
+int* reverse10()
+{
+    // Dynamically allocate memory for an array of 10 integers
+    int* arr = new int[10];
+    std::cout << "Please enter 10 integers:" << std::endl;
+
+    // Read 10 integers from user input
+    for (int i = 0; i < 10; i++)
+    {
+        std::cin >> arr[i];
+    }
+
+    // Reverse the array using the reverse() function
+    reverse(arr, 10);
+
+    // Return the pointer to the reversed array
+    return arr;
+}
+
 std::string popElementsAndGetPrintedStack(Stack* s)
 {
     std::stringstream output;
@@ -72,7 +99,6 @@ std::string arrayToString(int numbers[], int size)
     return outputString;
 }
 
-/* ===== Tests ===== */
 bool test1()
 {
     set_console_color(LIGHT_YELLOW);
