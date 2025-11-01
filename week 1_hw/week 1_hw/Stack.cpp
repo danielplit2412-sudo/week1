@@ -20,3 +20,21 @@ void push(Stack* s, unsigned int element)
 
     std::cout << "Element pushed: " << element << std::endl;
 }
+int pop(Stack* s)
+{
+    if (s->top == NULL)
+    {
+        std::cout << "Stack is empty, nothing to pop." << std::endl;
+        return -1;
+    }
+
+    int value = s->top->data;
+    removeFromHead(&(s->top));
+    std::cout << "Element popped: " << value << std::endl;
+    return value;
+
+}
+
+
+
+
