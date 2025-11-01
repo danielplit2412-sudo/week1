@@ -1,8 +1,11 @@
-#include "LinkedList.h"  
-#include <iostream>   
+#include "LinkedList.h"
+#include <iostream>
+
 int main()
 {
     linkedList* head;
+
+    // Initialize the list
     initList(&head);
 
     std::cout << "----- Checking if list is empty -----" << std::endl;
@@ -33,75 +36,114 @@ int main()
     return 0;
 }
 
+// Initializes the linked list by setting its head to NULL
+// Receives: pointer to linkedList** head (reference to the list head)
+// Returns: void
 void initList(linkedList** head)
 {
-	*head = NULL;  
+    *head = NULL;
 }
+
+// Adds a new node with a given value at the head of the list
+// Receives: pointer to linkedList** head, int value
+// Returns: void
 void addToHead(linkedList** head, int value)
 {
-    linkedList* newNode = new linkedList;
+    linkedList* newNode = NULL;
+
+    // Allocate memory for a new node
+    newNode = new linkedList;
+
+    // Assign the node's data and set its next pointer
     newNode->data = value;
     newNode->next = *head;
+
+    // Move the head pointer to the new node
     *head = newNode;
 }
+
+// Removes the first node from the list (head node)
+// Receives: pointer to linkedList** head
+// Returns: void
 void removeFromHead(linkedList** head)
 {
     linkedList* temp = NULL;
+
+    // Guard: do nothing if the list is empty
     if (*head == NULL)
     {
         std::cout << "List is empty, nothing to remove." << std::endl;
         return;
     }
-    temp=*head;
-    *head = (*head)->next;
-    std::cout << "Removed element: " << temp->data << std::endl;
-    delete temp;
 
+    // Store current head and move to next node
+    temp = *head;
+    *head = (*head)->next;
+
+    // Free memory of removed node
+    delete temp;
 }
+
+// Prints all elements of the list from head to tail
+// Receives: pointer to linkedList* head
+// Returns: void
 void printList(linkedList* head)
 {
-   
+    linkedList* current = NULL;
+    current = head;
+
+    // Guard: do nothing if the list is empty
     if (head == NULL)
     {
         std::cout << "List is empty." << std::endl;
         return;
     }
-    std::cout << "list: " << std::endl;
 
-    linkedList* current = head; 
-
+    // Traverse and print each node
     while (current != NULL)
     {
         std::cout << current->data << std::endl;
-        current = current->next;           
+        current = current->next;
     }
-
-    std::cout << std::endl;
 }
+
+// Frees all nodes in the linked list
+// Receives: pointer to linkedList** head
+// Returns: void
 void cleanList(linkedList** head)
 {
     linkedList* current = NULL;
+    linkedList* temp = NULL;
+
+    // Iterate through the list and free each node
     current = *head;
     while (current != NULL)
     {
-        linkedList* temp = current;
+        temp = current;
         current = current->next;
         delete temp;
     }
+
+    // Reset the head to NULL
     *head = NULL;
-    std::cout << "List cleaned successfully." << std::endl;
 }
+
+// Checks if the linked list is empty
+// Receives: pointer to linkedList* head
+// Returns: bool (true if empty, false otherwise)
 bool isEmpty(linkedList* head)
 {
+    bool empty = false;
+
+    // Empty if head pointer is NULL
     if (head == NULL)
     {
-        std::cout << "List is empty." << std::endl;
-        return true;
+        empty = true;
     }
     else
     {
-        std::cout << "List is not empty." << std::endl;
-        return false;
+        empty = false;
     }
-}
 
+    return empty;
+}
