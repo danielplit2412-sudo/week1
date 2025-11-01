@@ -39,6 +39,12 @@ void initStack(Stack* s)
     s->top = NULL;
     std::cout << "Stack initialized successfully." << std::endl;
 }
+void cleanStack(Stack* s)
+{
+    cleanList(&(s->top));
+    std::cout << "Stack cleaned successfully." << std::endl;
+}
+
 
 
 
