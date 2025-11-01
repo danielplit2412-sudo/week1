@@ -1,10 +1,40 @@
-#include <iostream>      
-#include "Stack.h"       
+#include <iostream>
+#include "Stack.h"
 #include "LinkedList.h"
 
+int main()
+{
+    // יצירת מחסנית חדשה
+    Stack s;
 
+    // אתחול המחסנית
+    initStack(&s);
 
+    std::cout << "----- Checking if stack is empty -----" << std::endl;
+    isEmpty(&s);
 
+    std::cout << "\n----- Adding elements (push) -----" << std::endl;
+    push(&s, 10);
+    push(&s, 20);
+    push(&s, 30);
+
+    std::cout << "\n----- Removing elements (pop) -----" << std::endl;
+    pop(&s);
+    pop(&s);
+
+    std::cout << "\n----- Checking if stack is empty again -----" << std::endl;
+    isEmpty(&s);
+
+    std::cout << "\n----- Cleaning stack -----" << std::endl;
+    cleanStack(&s);
+
+    std::cout << "\n----- Final check -----" << std::endl;
+    isEmpty(&s);
+
+    std::cout << "\nProgram finished successfully :)" << std::endl;
+
+    return 0;
+}
 
 void push(Stack* s, unsigned int element)
 {
