@@ -44,6 +44,24 @@ void cleanStack(Stack* s)
     cleanList(&(s->top));
     std::cout << "Stack cleaned successfully." << std::endl;
 }
+bool isEmpty(Stack* s)
+{
+    if (s->top == NULL)
+    {
+        std::cout << "Stack is empty." << std::endl;
+        return true;
+    }
+    else
+    {
+        std::cout << "Stack is not empty." << std::endl;
+        return false;
+    }
+}
+
+bool isFull(Stack* s)
+{
+    return false;
+}
 
 
 
